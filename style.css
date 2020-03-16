@@ -1,18 +1,296 @@
-thead{
- background-color: gray;
+.fatherbox{
+    width: 100%;
+    display: flex;
+  
 }
-.p{
-    background-color: gray;
+.buttona a{
+    text-decoration: none;
 }
-.pa{
-    background-color: gray;
+.fruitpic{
+    width: 60%;
 }
-.pb{
-    background-color: gray;
+.fruitpic img{
+    width: 100%;
 }
-.pc{
-    background-color: gray;
+.fatherbox .txt{
+    width: 40%;
+    
+    
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-left: 30px;
+    
+  
 }
-tbody th{
-    background-color: lavender;
+.fatherbox .txt h2{
+    font-size: 70px;
+    line-height: 85px;
+    padding: 20px 0px;
 }
+.fatherbox .txt h3{
+    font-size: 50px;
+    line-height: 75px;
+    color: yellow;
+    padding: 20px 0px 50px;
+   
+}
+.fatherbox .txt a{
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 3%;
+}
+.fatherbox .txt a:hover{
+    background-color: yellow;
+    color: #000;
+}
+.fatherfruit{
+    display: flex;
+    /* width: 100%; */
+
+}
+.fatherfruit .fruitpic{
+    position: relative;
+    width: 100%;
+   
+}
+.fatherfruit .fruitpic img{
+    width: 100%;
+    height: 100%;
+}
+.fatherfruit .fruitpic h2{
+    position: absolute;
+    left:100px;
+    bottom: 30px;
+    
+}
+.fatherthreepic{
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+   
+}
+.fatherthreepic .leftpic{
+    position: relative;
+    width: 50%;
+    margin: 0px 30px 0px 350px;
+}
+ .fatherthreepic .leftpic h2{
+     position: absolute;
+     bottom: 250px;
+     left: 70px;
+     color: #fff;
+     font-size: 40px;
+
+ }
+ 
+ .fatherthreepic .leftpic a{
+     position: absolute;
+     color: #fff;
+     bottom: 200px;
+     left: 50px;
+     font-size: 20px;
+ }
+ .fatherthreepic .rightpic {
+     position: relative;
+     margin: 0px 350px 0px 0px;
+    
+ }
+ .fatherthreepic .rightpic .left{
+     margin: 25px 0px;
+ }
+ .fatherthreepic .rightpic .right h2{
+     position: absolute;
+      top: 180px;
+      left: 40px;
+      font-size: 40px;
+      color: #fff;
+ }
+ .fatherthreepic .rightpic .right a{
+     position: absolute;
+     left: 40px;
+     top: 300px;
+     font-size: 20px;
+     color: #fff;
+    
+     
+ }
+ .fatherthreepic .rightpic .left h2{
+     position: absolute;
+     bottom: 250px;
+     font-size: 40px;
+     color: #fff;
+     left: 40px;
+ }
+ .fatherthreepic .rightpic .left p{
+    position: absolute;
+    bottom:220px;
+    
+    color: #fff;
+    left: 40px;
+ }
+ .fatherthreepic .rightpic .left a{
+    position: absolute;
+    bottom:160px;
+    font-size: 20px;
+    color: #fff;
+    left: 40px;
+ }
+ .box{
+     width: 100%;
+     margin-top: 80px;
+     height: 180px;
+     text-align: center;
+ } 
+ .itemboxs{
+    
+    display: flex;
+    justify-content: center;
+    margin: 0px 50px;
+   
+   
+ }
+ .itemboxs .items{
+     margin: 0px 20px;
+     background-color: beige;
+     width: 25%;
+     margin-bottom: 200px;
+     position: relative;
+ }
+ .itemboxs .items img{
+     width: 100%;
+ }
+ .itemboxs .items a{
+     text-decoration: none;
+     color: #000;
+     position: absolute;
+     bottom: -40px;
+     left: 0px;
+ }
+ .itemboxs .items p{
+     position: absolute;
+     bottom: -60px;
+ }
+ .itemboxs .items button{
+     position: absolute;
+     bottom: -120px;
+     left: 0px;
+     width: 120px;
+     height: 40px;
+     border-radius: 6px ;
+     background-color: #fff;
+ }
+ .itemboxs .items button:hover{
+     background-color: yellow;
+     cursor: pointer;
+     
+ }
+ .bannerbox{
+     text-align: center;
+     position: relative;
+    
+ }
+ .bannerbox .leftboxpic{
+    
+     width: 560px;
+     height:200px;
+     box-shadow: 0px 0px 10px gray;
+     position: absolute;
+     top: -60px;
+     left: 60px;
+     padding: 120px 0px;
+     background-color: #fff;
+   
+ }
+ .bannerbox .rightboxpics{
+     position: relative;
+     top: 80px;
+     
+     
+   
+ }
+ .bannerbox .leftboxpic h1{
+     font-size: 80px;
+ }
+ .bannerbox .leftboxpic p{
+     font-size: 70px;
+ }
+ .bannerbox .leftboxpic button{
+   
+     width: 150px;
+     height: 30px;
+     background-color: yellow;
+     margin-top: 50px;
+     border: 0 solid;
+     border-radius: 6px;
+ }
+ .bannerbox .leftboxpic button:hover{
+     background-color: #000;
+     color: #fff;
+ }
+ .bannerbox2{
+     margin-top: 200px;
+     display: flex;
+     justify-content: center;
+ }
+  .topbox{
+     display: flex;
+     margin: 70px 30px 0px;
+    
+ }
+ .downbox{
+     display: flex;
+     margin: 30px 30px 0px;
+ }
+ .righthead{
+     text-align: center;
+     font-size: 25px;
+ }
+ .topboxpic{
+     background-color: beige;
+     margin: 0px 20px;
+     display: flex;
+     flex-direction: column;
+     position: relative;
+ }
+ .downboxpic{
+     background-color: beige;
+     margin: 0px 20px;
+     display: flex;
+     flex-direction: column;
+ }
+ .topboxpic a{
+     position: absolute;
+     bottom: -20px;
+ }
+ .leftpicorange{
+     position: relative;
+    
+ }
+ .leftpicorange a{
+     position: absolute;
+     left: 60px;
+     bottom:50px;
+     font-size: 20px;
+     color: #fff;
+ }
+ .leftpicorange p{
+     bottom: 150px;
+     position: absolute;
+     font-size: 50px;
+     color: #fff;
+     left: 60px;
+
+ }
+ .leftpicorange img{
+     width: 100%;
+     height: 970px;
+ }
+ 
