@@ -1,0 +1,337 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+nav .device button {
+    border: 0px;
+    background: none;
+
+}
+.device i {
+    color: #fff;
+    
+}
+@media screen and (min-width: 768px){
+    .Logos{
+        position: relative;
+    }
+    .CommunityLink{
+       position: absolute;
+       right: 0px;
+    }
+}
+.CommunityLink a {
+    color:#b9b9b9;
+}
+.CommunityLink ul li{
+    margin:0px 10px;
+    
+}
+.breadcrumb a {
+    color: #000;
+    text-decoration: none;
+}
+.breadcrumb li{
+    padding: 0px 20px;
+}
+.breadcrumb .breadcrumb-item:nth-child(1) a{
+    color: #FFA396;
+}
+.breadcrumb a:hover{
+    color: #FFA396;
+    transition: .5s;
+}
+
+.HairExtensions {
+    position: relative;
+    
+}
+.HairExtensions .Txt {
+    position: absolute;
+
+    margin: auto;
+}
+.JoinNow a{
+    text-decoration: none;
+    color: #181a1f;
+    background-color: #fff;
+    font-size: 18px;
+    padding: 25px 40px;
+}
+.JoinNow a:hover{
+    background-color: #000;
+    color: #fff;
+    transition: .5s;
+}
+.CateGorylink a{
+    text-decoration: none;
+}
+.CateGorylink p{
+    color: #000;
+}
+.CateGorylink .item:nth-child(1) h3{
+    color: #7dd0dc;
+
+    font-size: 35px;
+    font-weight: normal;
+    font-family: 'Six Caps', sans-serif;
+}
+.CateGorylink .item:nth-child(2) h3{
+    color: #D4BCB5;
+   
+    font-size: 35px;
+    font-weight: normal;
+    font-family: 'Six Caps', sans-serif;
+}
+.CateGorylink .item:nth-child(3) h3{
+    color: #FFA396;
+   
+    font-size: 35px;
+    font-weight: normal;
+    font-family: 'Six Caps', sans-serif;
+}
+.CateGorylink .item:nth-child(1)::before{
+  
+  
+   
+
+}
+.CateGorylink p::after{
+    content: '>>';
+    margin-left: 5px;
+}
+.HairExtensions .Txt h2{
+    color: #fff;
+    font-size: 80px;
+}
+.HairExtensions .Txt h3{
+    font-size: 80px;
+    color: #181a1f;
+    font-weight: lighter;
+}
+.HairExtensions .Txt h4{
+    color: #181a1f;
+    font-size: 30px;
+    font-weight: initial;
+}
+.HairExtensions .Txt a{
+    text-decoration: none;
+    border: 3px solid #000;
+    padding: 2px 10px;
+    color: #000;
+}
+.HairExtensions .Txt{
+ 
+}
+
+.BrowseCategories a{
+    text-decoration: none;
+   
+}
+.BrowseCategories .txt{
+    text-align: center;
+    padding: 50px;
+    color: #000;   
+}
+.BrowseCategories .txt:hover{
+    background-color:#feede9;
+    transition: .5s;
+}
+.BrowseCategories .pic{
+    opacity: .7;
+}
+.BrowseCategories a .pic:hover{
+    opacity: 1;
+    transition: .5s;
+}
+.MercHandise{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.MercHandise .icon a{
+    color: #7a7a7a;
+    padding: 0px 5px;
+}
+.MercHandise .links{
+    text-decoration: none;
+    color: #000;
+}
+.MercHandise .links:hover{
+    color: #7dd0dc;
+    transition: .5s;
+}
+.MercHandise .icon a:hover{
+    color: #FFA396;
+}
+.MercHandise .btn{
+    border: 3px solid #000;
+    border-radius: 0px;
+    padding: 3px 2px;
+    font-size: 15px;
+    width: 50%;
+    margin: auto;
+}
+.MercHandise .btn:hover{
+    background-color: #000;
+    color: #fff;
+}
+.Products .Item{
+    border:1px solid #f3f3f3;
+}
+.Products .Item:hover{
+    border: 1px solid #181a1f;
+  
+}
+.CateGorylink .item{
+     text-align: center;
+     padding: 50px;
+}
+.BlogLink {
+    text-align: center;
+    
+}
+.BlogLink a{
+    color: #000;
+    text-decoration: none;
+}
+.BlogLink time{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.BlogLink wrap{
+   font-weight: 100;
+   color: #7a7a7a;
+}
+.BlogLink .BodyLink{
+    font-weight: bold;
+}
+.BlogLink .BodyLink:hover{
+    color: #FFA396;
+    transition: .5s;
+}
+.BlogLink .FootLink{
+    border: 3px solid #000;
+}
+.BlogLink .FootLink:hover{
+   background-color: #000;
+   color: #fff;
+   transition: .5s;
+}
+.BlogLink .BlogList{
+    position: relative;
+}
+.BlogLink .BlogList::before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 150px;
+    
+    border-top: 5px solid #000;
+    width: 50px;
+}
+.Features .icon .link{
+    text-decoration: none;
+    color: #7a7a7a;
+    padding: 0px 5px;
+}
+.Features .icon .link:hover{
+    color: #FFA396;
+    transition: .5s;
+}
+.Features .card-body .btn{
+    border: 3px solid #000;
+    border-radius: 0%;
+    width: 70%;
+    margin: auto;
+}
+.Features .card-body .btn:hover{
+    background-color: #000;
+    color: #fff;
+    transition: .5s;
+}
+.Features .card-body a{
+    text-decoration: none;
+   
+    color: #181a1f;
+}
+.Features .card-body a:hover{
+    color: #7dd0dc;
+    transition: .5s;
+}
+.Features .items{
+    border:1px solid #f3f3f3;
+}
+.Features .items:hover{
+    border: 1px solid #181a1f;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.InputOffers{
+   background-color:#e7f5f7;
+}
+.InputOffers .Offers{
+   flex-direction: column;
+   text-align: center;
+}
+.InputOffers .Offers h3{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.InputOffers .Offers h4{
+    font-weight: 300;
+    letter-spacing: -0.01em;
+}
+.InputOffers .btn{
+    border: 3px solid #000;
+    border-radius: 0px;
+    padding: 3px 2px;
+    font-size: 15px;
+    margin-bottom:3px;
+}
+.InputOffers .btn:hover{
+    background-color: #000;
+    color: #fff;
+}
+.CommuNityMenu a{
+    color: #000;
+   
+}
+.CommuNityMenu li:hover{
+    background-color: #000;
+    
+}
+.CommuNityMenu li:hover a{
+    color: #fff;
+}
+.CommuNityMenu ul li{
+    margin: 20px;
+    border-radius: 999em;
+    border: 3px solid #000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.contact-form input{
+    width: 40%;
+}
+.Footer {
+    background-color:#181a1f;
+}
+.Footer ul li a{
+    text-decoration: none;
+    color: #d3d3d3;
+    font-weight: lighter;
+    line-height: 40px;
+}
+.Footer::before{
+    content: '';
+    
+}
