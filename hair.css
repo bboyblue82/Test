@@ -59,6 +59,9 @@ nav .device button {
     color: #fff;
     transition: .5s;
 }
+.CateGorylink .Border{
+    position: relative;
+}
 .CateGorylink a{
     text-decoration: none;
 }
@@ -86,11 +89,53 @@ nav .device button {
     font-weight: normal;
     font-family: 'Six Caps', sans-serif;
 }
-.CateGorylink .item:nth-child(1)::before{
-  
-  
-   
+.CateGorylink .item:nth-child(1) .Border{
+    
+  border-top: 1px solid #7dd0dc;
+  border-bottom: 1px solid #000;
 
+}
+.CateGorylink .item:nth-child(2) .Border{
+    
+    border-top: 1px solid #D4BCB5;
+    border-bottom: 1px solid #000;
+  
+  }
+  .CateGorylink .item:nth-child(3) .Border{
+    
+    border-top: 1px solid #FFA396;
+    border-bottom: 1px solid #000;
+  
+  }
+  .CateGorylink .Border{
+      padding: 40px 0px;
+  }
+  .CateGorylink .item:nth-child(1) .Border::before{
+      content: '';
+      background-color: #7dd0dc;
+      position: absolute;
+      width: 15%;
+      height: 3px;
+      top: 0;
+      left: 45%;
+  }
+  .CateGorylink .item:nth-child(2) .Border::before{
+    content: '';
+    background-color: #D4BCB5;
+    position: absolute;
+    width: 15%;
+    height: 3px;
+    top: 0;
+    left: 42.5%;
+}
+.CateGorylink .item:nth-child(3) .Border::before{
+    content: '';
+    background-color: #FFA396;
+    position: absolute;
+    width: 15%;
+    height: 3px;
+    top: 0;
+    left: 45%;
 }
 .CateGorylink p::after{
     content: '>>';
@@ -126,8 +171,10 @@ nav .device button {
 }
 .BrowseCategories .txt{
     text-align: center;
+    
     padding: 50px;
-    color: #000;   
+    color: #000;  
+   
 }
 .BrowseCategories .txt:hover{
     background-color:#feede9;
@@ -139,6 +186,9 @@ nav .device button {
 .BrowseCategories a .pic:hover{
     opacity: 1;
     transition: .5s;
+}
+.BrowseCategories p{
+    border: 1px solid #000;
 }
 .MercHandise{
     display: flex;
@@ -185,7 +235,6 @@ nav .device button {
 }
 .BlogLink {
     text-align: center;
-    
 }
 .BlogLink a{
     color: #000;
