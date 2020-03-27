@@ -42,15 +42,10 @@ nav .device button {
     color: #FFA396;
     transition: .5s;
 }
-
-.HairExtensions {
-    position: relative;
-    
-}
-.HairExtensions .Txt {
-    position: absolute;
-
-    margin: auto;
+.ProwPic{
+    background: url(pic/promo_block_img.png)50% 50% no-repeat;
+    height: 330px;
+    background-size: cover;
 }
 .JoinNow a{
     text-decoration: none;
