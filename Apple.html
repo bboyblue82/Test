@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="iphone">iphone</button>
+    <button class="ipad">ipad</button>
+    <button class="mac">mac</button>
+    <button class="watch">watch</button>
+<div id="app"></div>
+<div id="color"></div>
+<div id="type"></div>
+<div id="show"></div>
+    <script>
+        var products={
+            iphone:{
+                p01:{id:'p01',color:'紅',price:'',storage:'64G',network:'Wifi',pic:'p01.jpg',url:'http:'},
+                p02:{id:'p02',color:'藍',price:'',storage:'128G',network:'Wifi',pic:'p01,jpg',url:'http:'},
+                p03:{id:'p03',color:'綠',price:'',storage:'256G',network:'Wifi',pic:'p01.jpg',url:'http:'}
+            },
+            ipad:{},
+            mac:{},
+            watch:{}
+        };
+var iphonebtn=document.getElementById('iphone');
+   var app=document.getElementById('app');
+   var color=document.getElementById('color');
+    
+    iphonebtn.addEventListener('click',function(){
+        for(let i=0;i<products.iphone.length;i++{
+            color.innerHTML+=`
+        })
+    }
+          
+    
+    </script>
+    
+</body>
+</html>
