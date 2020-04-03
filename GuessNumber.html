@@ -175,7 +175,7 @@
 
   });
  function guess() {
-  var number = document.getElementById("number").value;
+  var number = Number.parseInt(document.getElementById("number").value);
    if (number <=min || number >= max) {
   
      alert("请输入範圍內數字");
@@ -187,7 +187,7 @@
    } else if (number>ran &&number<max) {
      max=number;
      renew();
-     inputnum.value='';
+     inputnum.value='';  
    } else if (number<ran &&number>min) {
      min=number;
      renew();
