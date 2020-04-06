@@ -11,15 +11,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Apple Practice</title>
+    <style>
+        img{
+            width: 100%;
+        }
+     
+    </style>
   </head>
   <body>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 d-flex justify-content-center">
                 <button id="iphone" onclick="getpic()">iphone</button>
-                <button class="ipad">ipad</button>
-                <button class="mac">mac</button>
-                <button class="watch">watch</button>
+                <button class="ipad" onclick="getIpadpic()">ipad</button>
+                <button class="mac" onclick="getMacpic()">mac</button>
+                <button class="watch" onclick="getWatchpic()">watch</button>
             </div>
         </div>
        <div class="row">
@@ -44,15 +50,48 @@
         var iphonebtn=document.getElementById('iphone');
         var modelsnode=document.querySelector('.models');
         var img=document.createElement('img');
+       var types=document.querySelector('.type');
+ var Color=document.querySelector('.color');
      var merchandise={
          iphone:{
-             apperance:[{color:'太空灰色',src:'pic/iphone8-plus-silver-select-gray.png'}]
+             apperance:[{color:'銀色',src:'pic/iphone8-plus-silver-select-gray.png'},
+             {color:'太空灰色',src:'pic/iphone8-spgray.png'},
+             {color:'金色',src:'pic/iphone8-plus-gold.png'}],
+             device:[{storage:'64GB',price:'$15900'},
+             {storage:'128GB',price:'$17900'}]
+             
          }
      }
        function getpic(){
-           img.setAttribute('src','pic/iphone8-plus-silver-select-gray.png');
+           img.setAttribute('src','pic/iphone8-plus-three.png');
+           modelsnode.appendChild(img);
+            for(let i=0;i<merchandise.iphone.apperance.length;i++){
+                let btns=document.createElement('button');
+                btns.innerHTML=merchandise.iphone.apperance[i].color;
+                Color.appendChild(btns);
+               
+            }
+           for(let i=0;i<merchandise.iphone.device.length;i++){
+              let btns=document.createElement('button');
+              btns.innerHTML=merchandise.iphone.device[i];
+              types.appendChild(btns);
+           }
+              
+               
+       }
+       function getIpadpic(){
+           img.setAttribute('src','pic/ipadair.png');
            modelsnode.appendChild(img);
        }
+       function getMacpic(){
+           img.setAttribute('src','pic/macs.png');
+           modelsnode.appendChild(img);
+       }
+       function getWatchpic(){
+           img.setAttribute('src','pic/watch.png');
+           modelsnode.appendChild(img);
+       }
+       
    
     </script>
 
