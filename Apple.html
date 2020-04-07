@@ -1,24 +1,24 @@
-
-
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Apple Practice</title>
     <style>
-        img{
+        img {
             width: 100%;
         }
-     
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
@@ -28,77 +28,115 @@
                 <button class="watch" onclick="getWatchpic()">watch</button>
             </div>
         </div>
-       <div class="row">
-           <div class="col-12 col-md-6">
-               <div class="models"></div>
-           </div>
-           <div class="col-12 col-md-6">
-               <div class="color">
-                   <h3>選擇外觀</h3>
-               </div>
-               <div class="type">
-                   <h3>選擇容量</h3>
-               </div>
-               <div class="price">
-                   <span class="total"></span>
-               </div>
-           </div>
-       </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="models"></div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="color">
+                    <h3>選擇外觀</h3>
+                    <div class="btn-item1"></div>
+                </div>
+                <div class="type">
+                    <h3>選擇容量</h3>
+                    <div class="btn-item2"></div>
+                </div>
+                <div class="price">
+                    <span class="total"></span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        var iphonebtn=document.getElementById('iphone');
-        var modelsnode=document.querySelector('.models');
-        var img=document.createElement('img');
-       var types=document.querySelector('.type');
- var Color=document.querySelector('.color');
-     var merchandise={
-         iphone:{
-             apperance:[{color:'銀色',src:'pic/iphone8-plus-silver-select-gray.png'},
-             {color:'太空灰色',src:'pic/iphone8-spgray.png'},
-             {color:'金色',src:'pic/iphone8-plus-gold.png'}],
-             device:[{storage:'64GB',price:'$15900'},
-             {storage:'128GB',price:'$17900'}]
-             
-         }
-     }
-       function getpic(){
-           img.setAttribute('src','pic/iphone8-plus-three.png');
-           modelsnode.appendChild(img);
-            for(let i=0;i<merchandise.iphone.apperance.length;i++){
-                let btns=document.createElement('button');
-                btns.innerHTML=merchandise.iphone.apperance[i].color;
-                Color.appendChild(btns);
-               
+        var iphonebtn = document.getElementById('iphone');
+        var modelsnode = document.querySelector('.models');
+        var img = document.createElement('img');
+        var types = document.querySelector('.type');
+        var Color = document.querySelector('.color');
+        var btn1 = document.querySelector('.btn-item1');
+        var btn2 = document.querySelector('.btn-item2');
+        var spantotal = document.querySelector('.span');
+        var merchandise = {
+            iphone: {
+                apperance: [{ color: '銀色', src: 'pic/iphone8-plus-silver-select-gray.png' },
+                { color: '太空灰色', src: 'pic/iphone8-spgray.png' },
+                { color: '金色', src: 'pic/iphone8-plus-gold.png' }],
+                device: [{ storage: '64GB', price: '$15900' },
+                { storage: '128GB', price: '$17900' }]
+
+            },
+            ipad: {
+                apperance: [{ color: '銀色', src: 'sliver-ipad.png' }, 
+                { color: '太空灰色', src: 'gray-ipad.png' }, 
+                { color: '金色', src: 'pink-ipad.png' }],
+                device:[{storage:'64GB',price:'$16900'},
+                {storage:'256GB',price:'$21900'}]
             }
-           for(let i=0;i<merchandise.iphone.device.length;i++){
-              let btns=document.createElement('button');
-              btns.innerHTML=merchandise.iphone.device[i];
-              types.appendChild(btns);
-           }
-              
-               
-       }
-       function getIpadpic(){
-           img.setAttribute('src','pic/ipadair.png');
-           modelsnode.appendChild(img);
-       }
-       function getMacpic(){
-           img.setAttribute('src','pic/macs.png');
-           modelsnode.appendChild(img);
-       }
-       function getWatchpic(){
-           img.setAttribute('src','pic/watch.png');
-           modelsnode.appendChild(img);
-       }
-       
-   
+        }
+        function getpic() {
+            img.setAttribute('src', 'pic/iphone8-plus-three.png');
+            modelsnode.appendChild(img);
+            btn1.innerHTML = '';
+            for (let i = 0; i < merchandise.iphone.apperance.length; i++) {
+                let btns = document.createElement('button');
+                btns.innerHTML = merchandise.iphone.apperance[i].color;
+                btn1.appendChild(btns);
+                btns.addEventListener('click',()=>{
+                    
+                })
+
+            }
+            btn2.innerHTML = '';
+            // for (let i = 0; i < merchandise.iphone.device.length; i++) {
+            //     let btns = document.createElement('button');
+            //     btns.innerHTML = merchandise.iphone.device[i].storage;
+            //     btn2.appendChild(btns);
+            // }
+            merchandise.iphone.device.forEach(function (item, index, device) {
+                let btns = document.createElement('button');
+                btns.innerHTML = item.storage + item.price;
+                btn2.appendChild(btns);
+            });
+
+
+        }
+        var btncolor = document.querySelector('');
+        function getIpadpic() {
+            img.setAttribute('src', 'pic/ipadair.png');
+            modelsnode.appendChild(img);
+            btn1.innerHTML = '';
+            
+            for(let i=0;i<merchandise.ipad.apperance.length;i++){
+                let btns = document.createElement('button');
+                btns.innerHTML=merchandise.ipad.apperance[i].color;
+                btn1.appendChild(btns);
+            }
+           
+        }
+        function getMacpic() {
+            img.setAttribute('src', 'pic/macs.png');
+            modelsnode.appendChild(img);
+        }
+        function getWatchpic() {
+            img.setAttribute('src', 'pic/watch.png');
+            modelsnode.appendChild(img);
+        }
+
+
     </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
