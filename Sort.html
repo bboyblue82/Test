@@ -70,11 +70,11 @@ img{
                 }
                 // document.getElementById('msg').innerHTML=this.responseText;
                 ipad = JSON.parse(this.responseText);
-                ipad.forEach(item => {
+                ipad.products.forEach(item => {
                     addtbody(item);
 
                 })
-                addthead(ipad[0]);
+                addthead(ipad.products[0]);
             }
             xhr.open("GET", 'https://bs-frontend.azurewebsites.net/api/Apple/IPad');
             xhr.send();
@@ -93,7 +93,7 @@ img{
 
                         tbody.innerHTML = '';
                         let data = th.innerHTML;
-                        ipad.sort(function (a, b) {
+                        ipad.products.sort(function (a, b) {
                             var L = a[data];
                             var R = b[data];
 
@@ -118,7 +118,7 @@ img{
 
 
                         })
-                        ipad.forEach(item => {
+                        ipad.products.forEach(item => {
                             addtbody(item);
 
                         })
@@ -141,7 +141,7 @@ img{
                 tr.appendChild(td);
                 if(item=='picture'){
                    let img = document.createElement('img');
-                    img.setAttribute('src',`${rowArray[item]}`);
+                    img.setAttribute('src',`/pic/${rowArray[item]}`);
                     td.appendChild(img);
                 }
                 else{
