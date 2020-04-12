@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <button onclick="addtbody()">讀取資料</button>
+    <style>
+        th, td{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>縣市區資料</h1>
+    
+
+    <script>
+        var body = document.querySelector('body');
+        var table = document.createElement('table');
+        var thead = document.createElement('thead');
+        var tbody = document.createElement('tbody');
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        body.appendChild(table);
+
+
+        window.onload = function () {
+            let xhr = new XMLHttpRequest;
+            xhr.onload = function () {
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    zipcodeArray = JSON.parse(this.responseText);
+                    function addtbody(){}
+                    let th1 = document.createElement('th');
+                    let th2 = document.createElement('th');
+                    let th3 = document.createElement('th');
+                    let thtr = document.createElement('tr');
+                    th1.innerHTML = '縣市';
+                    th2.innerHTML = '地區';
+                    th3.innerHTML = '郵遞區號';
+                    thtr.appendChild(th1);
+                    thtr.appendChild(th2);
+                    thtr.appendChild(th3);
+                    thead.appendChild(thtr);
+
+                    for (let j = 0; j < zipcodeArray.length; j++) {
+                        for (let i = 0; i < zipcodeArray[j].AreaList.length; i++) {
+                            let td1 = document.createElement('td');
+                            let td2 = document.createElement('td');
+                            let td3 = document.createElement('td');
+                            let tbtr = document.createElement('tr');
+
+                            td1.innerHTML = zipcodeArray[j].CityName;
+                            td2.innerHTML = zipcodeArray[j].AreaList[i].AreaName;
+                            td3.innerHTML = zipcodeArray[j].AreaList[i].ZipCode;
+                            tbtr.appendChild(td1);
+                            tbtr.appendChild(td2);
+                            tbtr.appendChild(td3);
+                            tbody.appendChild(tbtr);
+                        }
+                    }
+
+
+
+                    // zipcodeArray.forEach(function (item, index) {
+                    //     ZipCode.push({ City: item.CityName, Discricts: [] });
+                    //     item.AreaList.forEach(function (areaitem, areaindex) {
+                    //         ZipCode[index].Discricts.push({ Discrict: areaitem.AreaName, ZipCode: areaitem.ZipCode });
+                    //     })
+
+                    // });
+
+
+
+                }
+                else {
+                    msg.textContent = '發生錯誤, HTTP response代碼 :' + xhr.status;
+                }
+
+            }
+
+            xhr.open("GET", "TaiwanAdress.json");
+            xhr.send();
+        }
+        // function addthead() {
+        //     let templateTitle = document.getElementById('templateTitle');
+        //     thead.appendChild(templateTitle.content);
+        // }
+        // function addtbody() {
+
+        //     let templateRow = document.getElementById('templateRow');
+
+        //     let cloneContent =
+        //         templateRow.content.cloneNode(true);
+
+        //        ZipCode.forEach(function(item,index){
+        //            let city=item.city;
+        //         let tds=document.createElement('td');
+        //            tds[0].innerHTML=item.City;
+
+        //         });
+
+
+        //     tbody.appendChild(cloneContent);
+        // }
+
+    </script>
+</body>
+
+</html>

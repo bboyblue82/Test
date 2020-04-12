@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+         
+       
+
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        th, tr{
+            border: 2px solid #000;
+            
+        }
+    </style>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+<body>
+    <div id="map"></div>
+
+
+
+    <script>
+        var chu;
+        var body = document.querySelector('body');
+        var table = document.createElement('table');
+        var thead = document.createElement('thead');
+        
+        table.appendChild(thead);
+        body.appendChild(table);
+
+        function initMap() {
+            chu = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 24.757082, lng: 120.952258 },
+                zoom: 20
+            });
+            fetch('https://maskmap.azurewebsites.net/api/mask/getmaskstock')
+                .then((response) => response.json())
+                .then((data) => {
+
+                  console.log(data);
+
+
+                    data.features.forEach((item, index) => {
+                        let th=document.createElement('th');
+                        let tr=document.createElement('tr');
+                        let th2=document.createElement('th');
+                        let th3=document.createElement('th');
+                        th.innerHTML=item.properties.name;
+                        th2.innerHTML=item.properties.masksLeft;
+                        th3.innerHTML=item.properties.childMasksLeft;
+                        
+                        tr.appendChild(th);
+                        tr.appendChild(th2);
+                        tr.appendChild(th3);
+                        thead.appendChild(tr);
+                       
+                        
+
+                        if (item.properties.masksLeft != 0 && item.properties.childMasksLeft != 0) {
+                            var markers = new google.maps.Marker({
+                                position: { lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] },
+                                map: chu,
+                                
+                                icon: 'monster.png',
+                                title: `地點:${item.properties.name} 成人口罩:${item.properties.masksLeft}片 
+                                兒童口罩:${item.properties.childMasksLeft}片`
+
+                            })
+                            var contentString=`<ul><li>地點:${item.properties.name} </li>
+                            <li>成人口罩:${item.properties.masksLeft}片</li><li>兒童口罩:${item.properties.childMasksLeft}片</li></ul> 
+                                `
+                            var infowindow = new google.maps.InfoWindow({
+                                content: contentString
+                            });
+                            markers.addListener('click', ()=>{
+                                infowindow.open(map, markers);
+                            })
+                        }
+                        else if (item.properties.masksLeft == 0 && item.properties.childMasksLeft == 0) {
+                            var markers = new google.maps.Marker({
+                                position: { lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] },
+                                map: chu,
+                                icon: 'feelings (1).png',
+                                title: `地點:${item.properties.name}成人口罩:${item.properties.masksLeft}片 
+                                兒童口罩:${item.properties.childMasksLeft}片`
+                            })
+                            var contentString=`<ul><li>地點:${item.properties.name} </li>
+                            <li>成人口罩:${item.properties.masksLeft}片</li><li>兒童口罩:${item.properties.childMasksLeft}片</li></ul> 
+                                `
+                            var infowindow = new google.maps.InfoWindow({
+                                content: contentString
+                            });
+                            markers.addListener('click', ()=>{
+                                infowindow.open(map, markers);
+                            })
+                        }
+
+
+                    })
+
+                    // Put your code here
+                })
+                .catch((error) => {
+                    // Handle the error
+                });
+
+            var marker = new google.maps.Marker({
+                position: chu.center,
+                map: chu,
+                animation: google.maps.Animation.BOUNCE
+            });
+
+        }
+
+
+
+
+
+
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag &callback=initMap"
+        async defer></script>
+
+</body>
+
+</html>

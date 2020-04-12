@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <button onclick="addtbody()">讀取資料</button>
+</head>
+
+<body>
+    <h1>縣市區資料</h1>
+    <table>
+        <thead>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <template id="templateTitle">
+        <tr>
+            <th>縣市</th>
+            <th>區</th>
+            <th>郵遞區號</th>
+
+        </tr>
+    </template>
+
+    <template id="templateRow">
+        <tr>
+            
+
+        </tr>
+    </template>
+    <script>
+        var body = document.querySelector('body');
+        var table = document.createElement('table');
+        var thead = document.createElement('thead');
+        var tbody = document.createElement('tbody');
+        
+        body.appendChild(table);
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        let ZipCode = [];
+        window.onload = function () {
+            let xhr = new XMLHttpRequest;
+            xhr.onload = function () {
+                addthead();
+                ZipCode.forEach((item) => {
+                    addtbody(Object.values(item))
+                });
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    zipcodeArray = JSON.parse(this.responseText);
+
+
+
+                    zipcodeArray.forEach(function (item, index) {
+                        ZipCode.push({ City: item.CityName, Discricts: [] });
+                        item.AreaList.forEach(function (areaitem, areaindex) {
+                            ZipCode[index].Discricts.push({ Discrict: areaitem.AreaName, ZipCode: areaitem.ZipCode });
+                        })
+
+                    });
+                 
+                  
+                 
+                }
+                else {
+                    msg.textContent = '發生錯誤, HTTP response代碼 :' + xhr.status;
+                }
+
+            }
+
+            xhr.open("GET", "http://127.0.0.1:5500/AjaxExamplesLite/Examples/TaiwanAdress/TaiwanAdress.json");
+            xhr.send();
+        }
+        function addthead() {
+            let templateTitle = document.getElementById('templateTitle');
+            thead.appendChild(templateTitle.content);
+        }
+        function addtbody() {
+            
+            let templateRow = document.getElementById('templateRow');
+            
+            let cloneContent =
+                templateRow.content.cloneNode(true);
+               
+               ZipCode.forEach(function(item,index){
+                   let city=item.city;
+                let tds=document.createElement('td');
+                   tds[0].innerHTML=item.City;
+                    
+                });
+                
+        
+            tbody.appendChild(cloneContent);
+        }
+
+    </script>
+</body>
+
+</html>
