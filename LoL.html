@@ -12,14 +12,16 @@
   
     <title>Hello, world!</title>
     <style>
-   
+    h5{
+      color: #000;
+    }
     </style>
 </head>
 
 <body>
     
     <div class="container">
-        <div class="row no-gutters justify-content-center">
+        <div class="row no-gutters">
             
         </div>
     </div>
@@ -67,15 +69,26 @@
                 let h=document.createElement('h5');
                 h.innerHTML=item.name;
                 let col=document.createElement('col');
-                col.className='col text-center';
+                col.className='col text-center bg-dark';
+
                 col.addEventListener('click', ()=>{
                     $('#exampleModal').modal('toggle');
                     let id=document.getElementById('exampleModalLabel');
                     let th=document.querySelector('.modal-header');
                     let img=document.createElement('img');
+                  
+                   
+                    ModalBody.innerHTML='';
+                  
                     img.src=item.icon;
                     id.innerHTML=item.name;
                     ModalBody.appendChild(img);
+                    Object.keys(item.stats).forEach(items=>{
+                      let p=document.createElement('p');
+                      p.innerHTML=`${items} : ${item.stats[items]}`;
+                      ModalBody.appendChild(p);
+                    })
+                   
                     
                     
 
