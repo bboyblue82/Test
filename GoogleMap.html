@@ -8,10 +8,17 @@
     <style>
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
         #map {
             height: 100%;
-         
-       
+            position: relative;
+            left: 10%;
+            width: 90%;
 
         }
 
@@ -21,75 +28,103 @@
             height: 100%;
             margin: 0;
             padding: 0;
+
         }
-        th, tr{
+
+        th,
+        tr {
             border: 2px solid #000;
-            
+
+        }
+
+        button {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 5%;
+        }
+
+        #box {
+            position: absolute;
+            top: 0px;
+            width: 10%;
+            height: 100%;
+            overflow: auto;
+
         }
     </style>
 </head>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 
 <body>
-    <div id="map"></div>
+    <div id="map">
 
+    </div>
+    <div id="box"></div>
 
 
     <script>
         var chu;
         var body = document.querySelector('body');
-        var table = document.createElement('table');
-        var thead = document.createElement('thead');
-        
-        table.appendChild(thead);
-        body.appendChild(table);
+        var Area = [];
+
+
 
         function initMap() {
             chu = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 24.757082, lng: 120.952258 },
+                center: { lat: 24.807350, lng: 120.960882 },
                 zoom: 20
+
             });
+            fetch('https://raw.githubusercontent.com/bboyblue82/Test/master/TaiwanAdress.json')
+                .then((response) => response.json())
+                .then((data) => {
+
+
+                    data.forEach(function (item) {
+                        let btn = document.createElement('button');
+
+                        btn.innerHTML = item.CityName;
+                        let div = document.getElementById('box');
+                        div.appendChild(btn);
+                        body.appendChild(div);
+
+                    })
+
+                })
+                .catch((error) => {
+
+                });
             fetch('https://maskmap.azurewebsites.net/api/mask/getmaskstock')
                 .then((response) => response.json())
                 .then((data) => {
 
-                  console.log(data);
 
 
                     data.features.forEach((item, index) => {
-                        let th=document.createElement('th');
-                        let tr=document.createElement('tr');
-                        let th2=document.createElement('th');
-                        let th3=document.createElement('th');
-                        th.innerHTML=item.properties.name;
-                        th2.innerHTML=item.properties.masksLeft;
-                        th3.innerHTML=item.properties.childMasksLeft;
-                        
-                        tr.appendChild(th);
-                        tr.appendChild(th2);
-                        tr.appendChild(th3);
-                        thead.appendChild(tr);
-                       
-                        
+
+
 
                         if (item.properties.masksLeft != 0 && item.properties.childMasksLeft != 0) {
                             var markers = new google.maps.Marker({
                                 position: { lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] },
                                 map: chu,
-                                
-                                icon: 'monster.png',
+
+                                icon: 'face-mask.png',
                                 title: `地點:${item.properties.name} 成人口罩:${item.properties.masksLeft}片 
                                 兒童口罩:${item.properties.childMasksLeft}片`
 
                             })
-                            var contentString=`<ul><li>地點:${item.properties.name} </li>
+                            var contentString = `<ul><li>地點:${item.properties.name} </li>
                             <li>成人口罩:${item.properties.masksLeft}片</li><li>兒童口罩:${item.properties.childMasksLeft}片</li></ul> 
                                 `
                             var infowindow = new google.maps.InfoWindow({
                                 content: contentString
                             });
-                            markers.addListener('click', ()=>{
+                            Area.push(markers);
+                            markers.addListener('click', () => {
                                 infowindow.open(map, markers);
                             })
                         }
@@ -97,24 +132,27 @@
                             var markers = new google.maps.Marker({
                                 position: { lat: item.geometry.coordinates[1], lng: item.geometry.coordinates[0] },
                                 map: chu,
-                                icon: 'feelings (1).png',
+                                icon: 'sad.png',
                                 title: `地點:${item.properties.name}成人口罩:${item.properties.masksLeft}片 
                                 兒童口罩:${item.properties.childMasksLeft}片`
                             })
-                            var contentString=`<ul><li>地點:${item.properties.name} </li>
+                            var contentString = `<ul><li>地點:${item.properties.name} </li>
                             <li>成人口罩:${item.properties.masksLeft}片</li><li>兒童口罩:${item.properties.childMasksLeft}片</li></ul> 
                                 `
                             var infowindow = new google.maps.InfoWindow({
                                 content: contentString
                             });
-                            markers.addListener('click', ()=>{
+                            Area.push(markers);
+
+                            markers.addListener('click', () => {
                                 infowindow.open(map, markers);
                             })
                         }
 
-
                     })
 
+                    var markerCluster = new MarkerClusterer(chu, Area,
+                        { imagePath: 'pic/m' });
                     // Put your code here
                 })
                 .catch((error) => {

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            display: flex;
+            flex-direction: column;
+            
+        }
+        div{
+            position: absolute;
+            right: 50px;
+        }
+        body{
+            position: relative;
+        }
+        
+    </style>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script> fetch('https://raw.githubusercontent.com/bboyblue82/Test/master/TaiwanAdress.json')
+    .then((response) => response.json())
+    .then((data) => {
+        var body=document.getElementsByTagName('body')[0];
+       
+        data.forEach(function(item){
+           let btn=document.createElement('button');
+           let div=document.getElementById('box');
+           btn.innerHTML=item.CityName;
+           div.appendChild(btn);
+           body.appendChild(div);
+          
+        })
+    })
+    .catch((error) => {
+        
+    });
+</script>
+   
+
+
+    
+</body>
+</html>
