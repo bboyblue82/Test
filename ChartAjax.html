@@ -13,6 +13,10 @@
     <title>Hello, world!</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
 </head>
   <body>
     <div class="container">
@@ -21,46 +25,49 @@
 
 
     <script>
-        fetch("https://raw.githubusercontent.com/apprunner/FileStorage/master/Temperature.json")
-        .then((response)=>response.json())
-        .then((Datas)=>{
-            var ctx = document.getElementById('lineChart');
+        $.ajax({
+            dataType:'json',
+            url:'https://raw.githubusercontent.com/apprunner/FileStorage/master/Temperature.json',
+            type:'Get',
+            success:function(Datas){
+                var ctx = document.getElementById('lineChart');
           
-        var chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels:Datas.Label,
-                datasets: [{
-                    label: Datas.City,
-                    data: Datas.Data,
-                    fill: false,
-                    backgroundColor: 'rgba(0,165,0,0.3)',
-                    borderColor: 'rgb(255,165,0)',
-                    pointStyle: "circle", 
-                    pointBackgroundColor: 'rgb(0,255,0)', 
-                    pointRadius: 5, 
-                    pointHoverRadius: 10, 
-                }]
-            },
-            options:{
-                responsive: true,
-                title: {
-                    display: true, 
-                    fontSize: 26,
-                    text: '1-6 月氣溫平均值' 
-                },
-                tooltips: {
-                    mode: 'point', 
-                    intersect: true, 
-                },
-                legend: {
-                    position: 'bottom', 
-                    labels: {
-                        fontColor: 'black'
-                    }
-                }
+          var chart = new Chart(ctx, {
+              type: 'line',
+              data: {
+                  labels:Datas.Label,
+                  datasets: [{
+                      label: Datas.City,
+                      data: Datas.Data,
+                      fill: false,
+                      backgroundColor: 'rgba(0,165,0,0.3)',
+                      borderColor: 'rgb(255,165,0)',
+                      pointStyle: "circle", 
+                      pointBackgroundColor: 'rgb(0,255,0)', 
+                      pointRadius: 5, 
+                      pointHoverRadius: 10, 
+                  }]
+              },
+              options:{
+                  responsive: true,
+                  title: {
+                      display: true, 
+                      fontSize: 26,
+                      text: '1-6 月氣溫平均值' 
+                  },
+                  tooltips: {
+                      mode: 'point', 
+                      intersect: true, 
+                  },
+                  legend: {
+                      position: 'bottom', 
+                      labels: {
+                          fontColor: 'black'
+                      }
+                  }
+              }
+          });
             }
-        });
         })
        
     </script>
