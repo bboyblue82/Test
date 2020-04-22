@@ -8,10 +8,16 @@
 </head>
 
 <body>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
     <h1>寶可夢圖鑑列表</h1>
 
     <button class="btn1" onclick="appendPokeonload()">載入寶可夢圖鑑列表</button>
-    <button class="btn2" onclick="pokemon()">載入單比寶可夢圖鑑</button>
+    <button class="btn2" onclick="pokemon()">載入單筆寶可夢圖鑑</button>
+    <button class="btn3" onclick="remove()">刪除單一寶可夢圖鑑</button>
+    <button class="btn4" onclick="removeAll()">去除所有寶可夢圖鑑</button>
     <div id="container">
 
     </div>
@@ -35,19 +41,18 @@
         //     let pokemonImg=`<img src='${pathfile}'/>`;
         //     container.innerHTML=pokemonImg;
         // }
-
+      var $container=$('#container');
+    
         function appendPokeonload() {
-            for (let i = 0; i <= 890; i++) {
+            
+            for (let i = 1; i <= 890; i++) {
                 let fileName = i.toString().padStart(3, '0');
-                let img = document.createElement('img');
-               
-                img.setAttribute(`src`, `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`);
+                // let img = document.createElement('img');
+               let img=$('<img>');
+                img.attr('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`);
                 
-                container.appendChild(img);
-                img.addEventListener('click', (event)=>{
-                    container.removeChild(event.target);
-            index--;
-                });
+                $('#container').append(img);
+              
             }
 
         }
@@ -56,12 +61,14 @@
         var index = 1;
      
         function pokemon() {
-           
-            let img = document.createElement('img');
-            let no = index.toString().padStart(3, '0');
-            img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${no}.png`);
+             
+            // let img = document.createElement('img');
+              let img=$('<img>');
             
-            container.appendChild(img);
+            let no = index.toString().padStart(3, '0');
+            img.attr('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${no}.png`);
+            
+            $('#container').append(img);
             index++;
 
             // let img = document.createElement('img');
@@ -69,6 +76,22 @@
             // img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${no}.png`);
             // container.appendChild(img);
             // index++;
+        }
+       
+       function remove(){
+
+        var len = container.childNodes.length;
+        console.log(len);
+            if (len > 0) {
+               container.removeChild(container.childNodes[len-1]);
+                index > 0 ? index-- : index;
+            }
+        }
+           
+       
+        function removeAll(){
+             
+            $('#container').html('');
         }
 
 
