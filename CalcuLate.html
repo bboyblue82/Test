@@ -42,6 +42,9 @@
             color: #000;
 
         }
+        #inputnum{
+            text-align: right;
+        }
     </style>
 </head>
 
@@ -96,8 +99,9 @@
         var Per=document.getElementById('percent');
         var Btn1 = document.getElementById('btn1');
         var Rad=document.getElementById('radical');
+        var point=document.getElementById('point');
         var result = 0;
-        
+       
         Btn1.addEventListener('click', function () {
             Inputnum.value += 1;
         });
@@ -132,11 +136,14 @@
         });
         var Btn9 = document.getElementById('btn9');
         Btn9.addEventListener('click', function () {
+          
             Inputnum.value += 9;
         });
         var Btn0 = document.getElementById('btn0');
         Btn0.addEventListener('click', function () {
-            Inputnum.value += 0;
+        
+                Inputnum.value += 0;
+            
         });
         var op;
         Per.addEventListener('click',function(){
@@ -148,38 +155,43 @@
         });
         addition.addEventListener('click', function () {
             op = 'add';
-           result = Number.parseInt(Inputnum.value);
+           result = Number(Inputnum.value);
             hiddens();
         });
         subtraction.addEventListener('click', function () {
             op = 'sub';
-            result = Number.parseInt(Inputnum.value);
+            result = Number(Inputnum.value);
             hiddens();
         })
         multiplication.addEventListener('click', function () {
             op = 'mult';
-            result = Number.parseInt(Inputnum.value);
+            result = Number(Inputnum.value);
             hiddens();
         })
         division.addEventListener('click', function () {
             op = 'divi';
-            result = Number.parseInt(Inputnum.value);
+            result = Number(Inputnum.value);
             hiddens();
+        })
+        point.addEventListener('click', ()=>{
+            if(!Inputnum.value.includes('.')){
+                Inputnum.value+='.';
+            }
         })
         Equ.addEventListener('click', function () {
            
             if (op =='add') {
                
-                Inputnum.value=result+Number.parseInt(Inputnum.value);
+                Inputnum.value=result+Number(Inputnum.value);
             }
             else if(op=='sub'){
-                Inputnum.value=result-Number.parseInt(Inputnum.value);
+                Inputnum.value=result-Number(Inputnum.value);
             }
             else if(op=='mult'){
-                Inputnum.value = result * Number.parseInt(Inputnum.value);
+                Inputnum.value = result * Number(Inputnum.value);
             }
             else if(op=='divi'){
-                Inputnum.value = result / Number.parseInt(Inputnum.value);
+                Inputnum.value = result / Number(Inputnum.value);
             }
 
 

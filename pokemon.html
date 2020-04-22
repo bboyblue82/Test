@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>寶可夢圖鑑列表</h1>
+
+    <button class="btn1" onclick="appendPokeonload()">載入寶可夢圖鑑列表</button>
+    <button class="btn2" onclick="pokemon()">載入單比寶可夢圖鑑</button>
+    <div id="container">
+
+    </div>
+
+    <script>
+        // var container=document.getElementById('container');
+        // //我要載入的時候執行一個方法,新增一張圖片
+        // window.onload=appendPokeonload();
+
+        // function appendPokemon(){
+        //     let img=document.createElement('img');
+        //     //建立一個img的Element
+        //     img.setAttribute('src','https://assets.pokemon.com/assets/cms2/img/pokedex/detail/562.png');
+        //     //add <img> into <div>
+        //         container.appendChild(img);
+
+        // }
+        // function appendPokemonTempLate(){
+        //     let fileName='001';
+        //     let pathfile=`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+        //     let pokemonImg=`<img src='${pathfile}'/>`;
+        //     container.innerHTML=pokemonImg;
+        // }
+
+        function appendPokeonload() {
+            for (let i = 0; i <= 890; i++) {
+                let fileName = i.toString().padStart(3, '0');
+                let img = document.createElement('img');
+               
+                img.setAttribute(`src`, `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`);
+                
+                container.appendChild(img);
+                img.addEventListener('click', (event)=>{
+                    container.removeChild(event.target);
+            index--;
+                });
+            }
+
+        }
+       
+
+        var index = 1;
+     
+        function pokemon() {
+           
+            let img = document.createElement('img');
+            let no = index.toString().padStart(3, '0');
+            img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${no}.png`);
+            
+            container.appendChild(img);
+            index++;
+
+            // let img = document.createElement('img');
+            // let no = index.toString().padStart(3, '0');
+            // img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${no}.png`);
+            // container.appendChild(img);
+            // index++;
+        }
+
+
+    </script>
+</body>
+
+</html>
