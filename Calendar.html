@@ -131,9 +131,10 @@
 
     function getrowday() {
       rowbody.innerHTML = '';
-
+     
       h.innerText = `${new Date(y, m, 1).getFullYear()}年 ${new Date(y, m, 1).getMonth() + 1}月`;
       var firstday = new Date(y, m, 1).getDay();
+   
       var lastday = new Date(y, m + 1, 0).getDate();
       var dt = 1;
 
@@ -151,10 +152,13 @@
             if (dt <= lastday) {
               p.innerText = dt;
               div.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
+              if(div.id==`${y}${m+1}${d}`){
+                div.style.background='gray';
+              }
               dt++;
               if(localStorage.getItem(div.id) !=null){
                 p.innerHTML += `<br>${localStorage.getItem(div.id)}`;
-             
+                
               }
 
               div.addEventListener('click', function (e) {
