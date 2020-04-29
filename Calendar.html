@@ -174,7 +174,7 @@
               }
 
               div.addEventListener('click', function (e) {
-                if (p.innerHTML != null) {
+                if (p.innerHTML != null && inputtext.value!='') {
                   $('#myModal').modal('show');
                   // currentDate = e.currentTarget.id;
                   savebtn.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
