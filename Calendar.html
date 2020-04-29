@@ -168,13 +168,13 @@
               div.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
 
               dt++;
-              if (localStorage.getItem(div.id) != null) {
+              if (localStorage.getItem(div.id) != null && inputtext.value!='') {
                 p.innerHTML += `<br>${localStorage.getItem(div.id)}`;
 
               }
 
               div.addEventListener('click', function (e) {
-                if (p.innerHTML != null && inputtext.value!='') {
+                if (p.innerHTML != null) {
                   $('#myModal').modal('show');
                   // currentDate = e.currentTarget.id;
                   savebtn.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
