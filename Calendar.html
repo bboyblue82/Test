@@ -1,72 +1,213 @@
-
-
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Hello,Calendar</title>
-    <style>
-      .col span{
-        font-size: 40px;
-        margin: 0px 40px;
-      }
-      .col{
-        border: 1px solid #000;
-      }
-    </style>
-  </head>
-  <script
-  src="http://code.jquery.com/jquery-3.5.0.js"
-  integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Hello,Calendar</title>
+  <style>
+    .weekday {
+      font-size: 30px;
+      margin: 0px 20px;
+    }
+
+    .day {
+      border: 1px solid #000;
+      padding: 20px;
+    }
+
+    h3::before {
+      content: '<';
+    }
+
+    h3::after {
+      content: '>';
+    }
+
+    #left,
+    #right {
+      border: 0px;
+    }
+
+    .row:nth-child(even) {
+      background-color: #faa;
+    }
+  </style>
+</head>
+<script src="http://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
   crossorigin="anonymous"></script>
-  <body>
-      <div class="container">
-          <div class="row">
-              <div class="col p-3 d-flex justify-content-center">
-                <h3>2020年 4月</h3>
-             </div>
-          </div>
-          <div class="row">
-            <div class="col  d-flex justify-content-center ">
-              <span>日</span>
-              <span>一</span>
-              <span>二</span>
-              <span>三</span>
-              <span>四</span>
-              <span>五</span>
-              <span>六</span>
-            </div>
-          </div>
-          
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col p-3 d-flex justify-content-center">
+        <button id="left">Back</button>
+        <h3></h3><button id="right">Forward</button>
       </div>
-      <script>
-          var containers=document.querySelector('.container');
-         
-         for(let i=0;i<6;i++){
-           let row=document.createElement('row');
-           
-           for(let j=0;j<7;j++){
-              let col=document.createElement('col');
-              col.innerText=`${j}`;
-            
-           }
-         }
-       
 
-          
-      </script>
+    </div>
+    <div class="row">
+      <div class="col  d-flex justify-content-center ">
+        <div class="col weekday">日</div>
+        <div class="col weekday">一</div>
+        <div class="col weekday">二</div>
+        <div class="col weekday">三</div>
+        <div class="col weekday">四</div>
+        <div class="col weekday">五</div>
+        <div class="col weekday">六</div>
+      </div>
+    </div>
+    <div class="body"></div>
+  </div>
+  <div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Schedule</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <label for="inputtext">schedule
+            <input type="text" id="inputtext">
+          </label>
+          <label for="inputcolor">color
+            <input type="color" id="inputcolor">
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save" onclick="Save(this.id)">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    //  var date=new Date()獲取
+
+    // date.getFullYear()獲取年份
+
+    // date.getMonth()獲取月份（number類型 ，1）
+
+    // date.getDate()獲取日期
+
+    // date.getDay()獲取星期
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+
+
+    var containers = document.querySelector('.container');
+    var h = document.querySelector('h3');
+    var subbtn = document.getElementById('left');
+    var addbtn = document.getElementById('right');
+    var rowbody = document.querySelector('.body');
+    var savebtn = document.getElementById('save');
+    var inputtext = document.getElementById('inputtext');
+    var storage = window.localStorage;
+    var currentDate = null;
+    var array = [
+      {
+        content:''
+      }
+    ];
+    var index = 0;
+
+    var today = new Date();
+    var y = today.getFullYear();
+    var m = today.getMonth();
+    var d = today.getDate();
+    getrowday();
+
+
+    function getrowday() {
+      rowbody.innerHTML = '';
+
+      h.innerText = `${new Date(y, m, 1).getFullYear()}年 ${new Date(y, m, 1).getMonth() + 1}月`;
+      var firstday = new Date(y, m, 1).getDay();
+      var lastday = new Date(y, m + 1, 0).getDate();
+      var dt = 1;
+
+      for (let i = 0; i < 6; i++) {
+        var row = document.createElement('div');
+        row.className = 'row body';
+
+        for (let j = 0; j < 7; j++) {
+          var div = document.createElement('div');
+          var p = document.createElement('p');
+          if (i == 0 && j < firstday) {
+
+          }
+          else {
+            if (dt <= lastday) {
+              p.innerText = dt;
+              div.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
+              dt++;
+              if(localStorage.getItem(div.id) !=null){
+                p.innerHTML += `<br>${localStorage.getItem(div.id)}`;
+             
+              }
+
+              div.addEventListener('click', function (e) {
+                if (p.innerHTML != null) {
+                  $('#myModal').modal('show');
+                  // currentDate = e.currentTarget.id;
+                  savebtn.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
+                }
+                // if (localStorage.getItem(div.id) != null) {
+                //   p.innerHTML += localStorage.getItem(div.id);
+                // }
+              });
+            }
+          }
+          div.className = 'col day';
+          div.appendChild(p);
+          row.appendChild(div);
+        }
+
+        rowbody.appendChild(row);
+      }
+
+    }
+
+    subbtn.addEventListener('click', () => {
+      m--;
+      getrowday();
+    })
+    addbtn.addEventListener('click', () => {
+      m++;
+      getrowday();
+    })
+
+    function Save(id) {
+      localStorage.setItem(id, inputtext.value);
+      $('#myModal').modal('hide');
+      getrowday();
+    }
+
+  </script>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

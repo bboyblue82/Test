@@ -33,7 +33,7 @@
     <button id="answer">查看原圖</button>
     <button id="random" onclick=" ReStart()">圖片打散</button>
 
-    <canvas id="canvas" width="150px" height="150px" hidden></canvas>
+    <canvas id="canvas" hidden></canvas>
     <div id="pics"></div>
     <div class="box"></div>
     <script>
@@ -42,7 +42,7 @@
         var pics = document.getElementById('pics');
         var random = document.getElementById('random');
         var array = [];
-        var narray=[];
+
         look.addEventListener('click', () => {
             let img = document.createElement('img');
             img.style.width = '200px';
@@ -52,54 +52,69 @@
             box.innerHTML = '';
             box.appendChild(img);
         })
+
         display();
 
         function display() {
             var canvas = document.getElementById('canvas');
             var ctx = document.getElementById('canvas').getContext('2d');
-
+            var n = 3;
+            var blank = document.getElementById('blank');
             var img = new Image();
             img.onload = function () {
-                for (let i = 0; i < 3; i++) {
-                    for (let j = 0; j < 3; j++) {
-                        if (i == 2 && j == 2) {
+                let x = img.width / n;
+                let y = img.height / n;
+
+                canvas.width = 450 / n;
+                canvas.height = 450 / n;
+                for (let i = 0; i < n; i++) {
+                    for (let j = 0; j < n; j++) {
+                        if (i == n - 1 && j == n - 1) {
+                            var dataURL = canvas.toDataURL();
+
+                            var imgs = document.createElement('img');
+                            imgs.src = dataURL;
+                            imgs.id = 'blank';
+
 
                         }
                         else {
-                            ctx.drawImage(img, j * 150, i * 150, 150, 150, 0, 0, 148, 148);
+                            ctx.drawImage(img, j * x, i * y, x, y, 0, 0, canvas.width - 2, canvas.height - 2);
+                            var dataURL = canvas.toDataURL();
+
+
+                            var imgs = document.createElement('img');
+                            imgs.src = dataURL;
+
+
                         }
-                        var dataURL = canvas.toDataURL();
                         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                        let imgs = document.createElement('img');
-                        imgs.src = dataURL;
-                        
-                        array.push(dataURL);
-                        pics.appendChild(imgs); 
+
+                        pics.appendChild(imgs);
                     }
                 }
+                pics.childNodes.forEach(item => {
+                    array.push(item);
+
+                })
+            
+
             }
             img.setAttribute('src', 'blackmans.png');
-
         }
         function ReStart() {
-            // var ranpic = document.querySelectorAll('img');        
-            pics.innerHTML = '';
-            var f = array.sort(function () {
-                return Math.random() - 0.5;
 
-            })  
-            f.forEach(function (item,index) {
-            //    ranpic[index].src=item;
-            //    ranpic[index].className=`L${index}`;
-            //   pics.appendChild(ranpic[index]);
-             let ranpic=document.createElement('img');
-             ranpic.src=item;
-             ranpic.className=`L${index}`;
-             pics.appendChild(ranpic);
-            })
+            // array.forEach(function(item,index){
+            //     let ranpic=document.createElement('img');
+            //     ranpic.src=item; ranpic.className=`L${index}`;
+
+            // })
         }
-        
+      
+
+
+
 
     </script>
 

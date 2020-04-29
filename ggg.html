@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Title</title>
+ <link href="css/style.css" rel="stylesheet" type="text/css" />
+ <style>
+     .div_calendar {
+ width: 450px;
+ margin: 0 auto;
+ text-align: center;
+ display: -webkit-box;
+}
+
+/** 日历标题 */
+.div_calendar_title {
+ width: 450px;
+ margin: 0 auto;
+ text-align: center;
+}
+
+/** 日历主体 */
+.div_calendar_body {
+ width: 350px;
+ text-align: center;
+}
+
+/** 日元素 */
+.div_calendar span {
+ width: 50px;
+ display: inline-block;
+ text-align: center;
+ line-height: 50px;
+}
+
+/** 正常 */
+.div_calendar span.normal {
+ color: blue;
+}
+
+/** 迟到 */
+.div_calendar span.late {
+ color: red;
+}
+
+/** 缺勤 */
+.div_calendar span.absense {
+ color: #666;
+}
+
+/** 缺勤 */
+.div_calendar span.today {
+ border-radius: 50%;
+ background: cornflowerblue;
+}
+
+/** 日历第一行日期 */
+.div_calendar .first_div {
+ text-align: right;
+}
+
+/** 日历末行日期 */
+.div_calendar .last_div {
+ text-align: left;
+}
+
+/** 日期显示div */
+.div_calendar .div_currentDate {
+ text-align: right;
+}
+
+.div_calendar .changeDate {
+ cursor: pointer;
+}
+
+.div_calendar .div_currentDate span {
+ width: inherit;
+}
+
+.div_calendar .div_currentDate span em {
+ margin: 5px;
+}
+
+
+ </style>
+</head>
+<body>
+<div class="div_calendar_title"><h1>自定义日历</h1></div>
+<div id="calendar_div" class="div_calendar">
+</div>
+<script src="script/attendanceCalendar.js"></script>
+<script>
+     function initCalendarBody() {
+  $content = document.createElement("div");
+  addClass($content, "div_calendar_body");
+  $elem.appendChild($content);
+  addCalendarHead();
+
+  //日期计算bug，例：2017-01
+  var num = 0;
+  do {
+   var length = 0;
+   if (num == 0) {
+    //出星期天外，星期数(1~6)和第一行显示的日期数(7~2)，相加的结果都为8
+    length = firstWeekDay == 0 ? 1 : 8 - firstWeekDay;
+    num = length;
+    createLine(length - 1, 1);
+   }
+   else {
+    var length = mds - num > 6 ? 7 : mds - num;
+    num = num + length;
+    createLine(length - 1);
+   }
+  }
+  while (num < mds)
+  showCurrentDate();
+ }
+
+ function createLine(num, type) {
+  var newDiv = document.createElement("div");
+  for (var i = 0; i <= num; i++, index++) {
+   var span = document.createElement("span");
+   var span_text = document.createTextNode(index + 1);
+   //单个日期元素的操作
+   if (attendances && attendances.length > 0) {
+    bindAttendance(span, attendances[index]);
+   }
+   span.appendChild(span_text);
+   newDiv.appendChild(span);
+  }
+  if (type == 1) {
+   addClass(newDiv, "first_div")
+  }
+  else {
+   addClass(newDiv, "last_div")
+  }
+  $content.appendChild(newDiv);
+ }
+
+</script>
+</body>
+</html>
