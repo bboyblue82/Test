@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+
+   <style>
+       div{
+           width: 150px;
+           height: 150px;
+       }
+       .box{
+           width: 450px;
+           height:300px;
+           display: flex;
+           flex-wrap: wrap;
+       }
+   </style>
 </head>
 <body>
+
+   <div class="box">
+       <div id="one" style="background-color: aqua;"></div>
+       <div id="two" style="background-color: black;"></div>
+       <div id="three" style="background-color: red;" ></div>
+       <div id="four" style="background-color: blue;"></div>
+       <div id="five" style="background-color: yellow;"></div>
+       <div id="six" style="background-color: green;"></div>
+   </div>
+  
     
-
-    <div id="container"></div>
-
-    <script>
-        var storage=window.localStorage;
-        console.log(storage);
-        localStorage.setItem('name','kevin');
-        localStorage.setItem('email','kevin@yahoo');
-
-        let name=localStorage.getItem('name');
-        let email=localStorage.getItem('email');
-
-        document.getElementById('container').innerText=name+','+email;
-    </script>
 </body>
 </html>
