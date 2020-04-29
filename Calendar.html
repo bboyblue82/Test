@@ -20,6 +20,8 @@
     .day {
       border: 1px solid #000;
       padding: 20px;
+     
+     
     }
 
     h3::before {
@@ -52,6 +54,7 @@
     .col .weekday {
       color: #fff;
     }
+   
   </style>
 </head>
 <script src="http://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
@@ -168,7 +171,7 @@
               div.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
 
               dt++;
-              if (localStorage.getItem(div.id) != null && inputtext.value!='') {
+              if (localStorage.getItem(div.id) != null) {
                 p.innerHTML += `<br>${localStorage.getItem(div.id)}`;
 
               }
@@ -205,7 +208,10 @@
     })
 
     function Save(id) {
-      localStorage.setItem(id, inputtext.value);
+      if(inputtext.value!=null && inputtext.value!=''){
+        localStorage.setItem(id, inputtext.value);
+      }
+      
       $('#myModal').modal('hide');
       getrowday();
     }
