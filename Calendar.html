@@ -131,13 +131,8 @@
     var savebtn = document.getElementById('save');
     var inputtext = document.getElementById('inputtext');
     var storage = window.localStorage;
-    var currentDate = null;
-    var array = [
-      {
-        content: ''
-      }
-    ];
-    var index = 0;
+    var array={ID:'',Content:''};
+    var index=1;
 
     var today = new Date();
     var y = today.getFullYear();
@@ -171,9 +166,9 @@
               div.id = `${y}${m + 1}${i * 7 + j + 1 - firstday}`;
 
               dt++;
-              if (localStorage.getItem(div.id) != null) {
-                p.innerHTML += `<br>${localStorage.getItem(div.id)}`;
-
+              if (localStorage.getItem(`${div.id}${index}`) != null) {
+                let json = JSON.parse(`${localStorage.getItem(`${div.id}${index}`)}`);
+                p.innerHTML += `<br>${json.Content}`;
               }
 
               div.addEventListener('click', function (e) {
@@ -209,12 +204,21 @@
 
     function Save(id) {
       if(inputtext.value!=null && inputtext.value!=''){
-        localStorage.setItem(id, inputtext.value);
+        // localStorage.setItem(id, inputtext.value);
+        
+        array.ID=`${id}${index}`;
+        array.Content=inputtext.value;
+        localStorage.setItem(`${id}${index}`, JSON.stringify(array));
+        console.log(array);
       }
       
       $('#myModal').modal('hide');
       getrowday();
     }
+    function Remove(){
+
+    }
+
     function Remark() {
       if (document.getElementById(`${today.getFullYear()}${today.getMonth() + 1}${d}`) != null) {
         let cat = document.getElementById(`${today.getFullYear()}${today.getMonth() + 1}${d}`);

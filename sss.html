@@ -29,7 +29,20 @@
        <div id="five" style="background-color: yellow;"></div>
        <div id="six" style="background-color: green;"></div>
    </div>
+  <script>
+
+//    var box=document.querySelector('.box');
+   var one=document.getElementById('one').parentNode;
+   var one2=document.getElementById('one');
+   var two=document.getElementById('two');
   
+
+
+
+  one2.addEventListener('click', ()=>{
+    one.insertBefore(two,one2);
+  })
+  </script>
     
 </body>
 </html>
